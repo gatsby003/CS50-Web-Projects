@@ -1,0 +1,32 @@
+textarea {
+    min-height: 400px;
+}
+
+
+p {
+    flex-direction: column;
+
+}
+
+.top-bar {
+    display: flex;
+}
+
+.post {
+    display: flex;
+    border: solid;
+    margin-bottom: 5px;
+}
+
+.read {
+    background: blanchedalmond;
+}
+
+.unread {
+    background: cadetblue;
+}
+
+#show-mails-view {
+    margin-top: 20px;
+    border: solid 2px;
+}

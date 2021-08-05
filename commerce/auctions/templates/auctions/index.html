@@ -1,0 +1,23 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+    {% if user.is_authenticated %}
+      {% for listing in open_listings %}
+          <div class="listing-class">
+            <a href="{% url 'activelisting' listing.id %}"><h3>{{listing.name}}</h3></a>
+            <h4>${{listing.price}}</h4>
+            <img src={{listing.image}} alt="" height="240" width="240">
+          </div>
+      {% endfor %}
+      {% for listing in closed_listings %}
+        <div class="listing-class">
+          <a href="{% url 'resultpage' listing.id %}"><h3>{{listing.name}}</h3></a>
+          <h4>${{listing.price}}</h4>
+          <img src={{listing.image}} alt="" height="240" width="240">
+        </div>
+      {% endfor %}
+    {% else %}
+      <h1>Login to view active listing</h1>
+    {% endif %}
+{% endblock %}

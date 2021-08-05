@@ -1,0 +1,60 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+
+{% if error %}
+  {{error}}
+{% endif %}
+
+{% if user.is_authenticated %}
+  <div class="listing-class">
+    <h1>{{listing.name}}</h1>
+    <img src={{listing.image}} alt="" height="300" width="200">
+    <h3>Base Price: ${{listing.price}}</h3>
+  {% if watchlist %}
+      <a href="{% url 'removefromwatchlist' listing.id %}">Remove From Watchlist</a>
+    {% else %}
+      <a href="{% url 'addtowatchlist' listing.id %}">Add Item To Watchlist</a>
+  {% endif %}
+    {% if user.username == listing.creator.username %}
+      {% if pastbids %}
+        <div class="bid-class">
+          <ul>
+            <h2>Bids made for the item are shown below!</h2>
+            {% for bid in pastbids %}
+            <li>${{bid.bid}} by {{bid.bidder.username}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="close_auction">
+          <a href="{% url 'closeauction' listing.id %}">Close Auction on current highest bidder</a>
+        </div>
+      {% else %}
+        <h2>No bids have been made yet</h2>
+      {% endif %}
+    {% else %}
+    <div class="bid-form">
+      <form class="bid-form" action="{% url 'placebid' %}" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" name="" value="Place Bid">
+        <input type="hidden" id="listing_id" name="listing_id" value={{listing.id}}>
+      </form>
+    </div>
+      {% if pastbids %}
+        <div class="bid-class">
+          <ul>
+            <h3>Bids made for this item, you need to bid higher than them to get a chance!</h3>
+            {% for bid in pastbids %}
+            <li>${{bid.bid}} by {{bid.bidder.username}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% else %}
+        <h3>No bids have been made yet</h3>
+      {% endif %}
+    {% endif %}
+{% else %}
+  <h1>Login to view the listing</h1>
+{% endif %}
+  </div>
+{% endblock %}

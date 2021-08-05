@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html"%}
+
+{% block title %}
+  Search
+{% endblock %}
+
+{% block body %}
+  {% if entries %}
+  <h2>Can't find exact entry , but here are the closest reuslts</h2>
+    {% for entry in entries %}
+      <li><a href="{% url 'fetch' entry %}">{{ entry }}</a></li>
+    {% endfor %}
+  {% else %}
+    <h2>No entries found.</h2>
+  {% endif %}
+{% endblock %}

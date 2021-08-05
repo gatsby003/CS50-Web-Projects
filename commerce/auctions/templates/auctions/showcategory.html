@@ -1,0 +1,6 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+  {% for listing in listings %}
+    <a href="{% url 'activelisting' listing.id %}">{{listing.name}}</a>
+    {% endfor %}
+{% endblock %}

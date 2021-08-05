@@ -1,0 +1,56 @@
+body {
+    margin: 2px;
+    background-color: white;
+}
+
+code {
+    white-space: pre;
+}
+
+h1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    height: 50vh;
+    width: 75%;
+}
+
+.main {
+    padding: 10px;
+}
+
+.search {
+    width: 100%;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.sidebar {
+    background-color: #f0f0f0;
+    height: 100vh;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-top: 5px;
+}
+
+.entry {
+  width: 50%;
+  height: 50%;
+}
+
+.title {
+  text-align:left;
+}
+
+p {
+  margin: 0;
+}
+
+#id_title , #id_entry{
+  margin-top : 5px;
+  margin-bottom: 5px;
+}

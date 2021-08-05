@@ -1,0 +1,8 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+  {% if user.username == winner.username %}
+    <h1>Congratulations! You won the auction</h1>
+  {% else %}
+    <h1>{{winner.username}} has won the auction.</h1>
+  {% endif %}
+{% endblock %}
